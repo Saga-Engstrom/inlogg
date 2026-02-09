@@ -3,10 +3,20 @@
   margin: 0;
 }
 .body {
-  height: auto;
+  height: 100vh;
   width: 100vw;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-color: black;
+  background-size: auto 120%;
+  background-position: center;
+  background-color: rgb(75, 132, 165);
   background-image: url("/pictures/wp3272702--wallpapers.jpg");
+}
+.btn {
+  height: 1.5rem;
+  width: 4rem;
+}
+#textBox {
+  height: 25vh;
+  width: 75vw;
+  background-color: antiquewhite;
 }
