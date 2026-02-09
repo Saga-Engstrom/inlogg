@@ -1,0 +1,12 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.body {
+  height: auto;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  background-image: url("/pictures/wp3272702--wallpapers.jpg");
+}
