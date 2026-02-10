@@ -1,4 +1,4 @@
-function logIn() {
-  const logIn = document.getElementById("textBox");
-  logIn.remove();
-}
+const logIn = document.getElementById("logInDiv");
+const logOut = document.getElementById("logOutDiv");
+
+logOut.style.display = "none";

@@ -8,9 +8,15 @@
     <script src="script.js" defer></script>
   </head>
   <body class="body">
-    <div>
-      <button class="btn" onclick="logIn()">button</button>
-      <div id="textBox"></div>
+    <div id="mainBox">
+      <div id="logInDiv">
+        <button class="btn" onclick="logInFunc()">Login</button>
+        <p>Vänligen skriv in användarnamn och lösenord</p>
+      </div>
+      <div id="logOutDiv">
+        <button class="btn" onclick="logOutFunc()">Logout</button>
+        <p>Välkommen X</p>
+      </div>
     </div>
   </body>
 </html>
