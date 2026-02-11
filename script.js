@@ -8,7 +8,9 @@ function showLogin() {
   loginlabel.innerText = "Skriv in ditt användarnamn och lösenord";
   const loginBtn = document.createElement("button");
   let usernameElmnt = document.createElement("input");
+  usernameElmnt.setAttribute("placeholder", "Användarnamn");
   let passwordElmnt = document.createElement("input");
+  passwordElmnt.setAttribute("placeholder", "Lösenord");
   passwordElmnt.setAttribute("type", "password");
   loginBtn.innerText = "Login";
 
@@ -22,12 +24,15 @@ function showLogin() {
   });
 }
 //on login click verify user else show no login
-function verify(userName, password) {
-  if (userName == "test" && password == "1234") {
-    mainBox.innerHTML = "";
+function verify(username, password) {
+  if (username == "test" && password == "1234") {
+    upperBox.innerHTML = "";
+    lowerBox.innerHTML = "";
+    outputBox.innerHTML = "";
     console.log("Rätt input");
+    showLogedin(username);
   }
-  if (userName != "test") {
+  if (username != "test") {
     const wrongName = document.createElement("text");
     wrongName.innerText = "Fel användarnamn";
     outputBox.appendChild(wrongName);
@@ -41,8 +46,27 @@ function verify(userName, password) {
 }
 
 //on sucssesful login show site and logout option
-function showLogedin() {}
-//logout screen with 5sek timer then switch to login page
-function loggingOut() {}
+function showLogedin(username) {
+  const logoutBtn = document.createElement("button");
+  logoutBtn.innerText = "Logga ut";
+  const welcomeText = document.createElement("text");
+  welcomeText.innerText = "Välkommen " + username;
+
+  upperBox.appendChild(logoutBtn);
+  lowerBox.appendChild(welcomeText);
+  console.log("Login");
+  logoutBtn.addEventListener("click", function () {
+    logingOut();
+  });
+}
+
+//logout switch to login page
+function logingOut() {
+  upperBox.innerHTML = "";
+  lowerBox.innerHTML = "";
+  outputBox.innerHTML = "";
+
+  showLogin();
+}
 
 showLogin();

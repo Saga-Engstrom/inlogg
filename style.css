@@ -24,19 +24,24 @@
   flex-direction: column;
 }
 #upperBox {
+  height: 12.5vh;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
 }
+
 #lowerBox {
+  height: 12.5vh;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: top;
 }
 #lowerBox > button {
   height: 1.5rem;
   width: 5rem;
-  margin: 1rem;
+  margin: 0.35rem;
   border-radius: 0.5rem;
 }
 #lowerBox > input {
