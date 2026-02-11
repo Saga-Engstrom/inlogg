@@ -44,3 +44,7 @@
   margin: 0.1rem;
   border-radius: 0.5rem;
 }
+#outputBox {
+  display: flex;
+  flex-direction: column;
+}

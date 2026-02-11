@@ -1,5 +1,6 @@
 const upperBox = document.getElementById("upperBox");
 const lowerBox = document.getElementById("lowerBox");
+const outputBox = document.getElementById("outputBox");
 
 //show login box and instructions
 function showLogin() {
@@ -23,19 +24,22 @@ function showLogin() {
 //on login click verify user else show no login
 function verify(userName, password) {
   if (userName == "test" && password == "1234") {
-    upperBox.innerHTML = "";
-    lowerBox.innerHTML = "";
+    mainBox.innerHTML = "";
     console.log("Rätt input");
-  } else if (userName != "test") {
+  }
+  if (userName != "test") {
+    const wrongName = document.createElement("text");
+    wrongName.innerText = "Fel användarnamn";
+    outputBox.appendChild(wrongName);
     console.log("Fel användarnamn");
   } else if (password != "1234") {
+    const wrongPassword = document.createElement("text");
+    wrongPassword.innerText = "Fel lösenord";
+    outputBox.appendChild(wrongPassword);
     console.log("Fel lösenord");
-  } else {
-    console.log("invalid");
   }
-
-  console.log("username:" + userName + ", password:" + password);
 }
+
 //on sucssesful login show site and logout option
 function showLogedin() {}
 //logout screen with 5sek timer then switch to login page
