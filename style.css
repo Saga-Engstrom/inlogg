@@ -12,7 +12,6 @@
   align-items: center;
   flex-wrap: wrap;
 }
-
 #mainBox {
   height: 25vh;
   width: 75vw;
@@ -30,7 +29,6 @@
   justify-content: center;
   align-items: end;
 }
-
 #lowerBox {
   height: 12.5vh;
   width: 100%;
@@ -39,9 +37,10 @@
   align-items: top;
 }
 #lowerBox > button {
-  height: 1.5rem;
-  width: 5rem;
-  margin: 0.35rem;
+  height: 1.7rem;
+  width: 4rem;
+  margin: 0.1rem;
+  margin-top: 0.2rem;
   border-radius: 0.5rem;
 }
 #lowerBox > input {

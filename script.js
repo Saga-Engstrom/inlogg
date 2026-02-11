@@ -32,12 +32,19 @@ function verify(username, password) {
     console.log("Rätt input");
     showLogedin(username);
   }
+
+  upperBox.innerHTML = "";
+  lowerBox.innerHTML = "";
+  outputBox.innerHTML = "";
+  showLogin();
+
   if (username != "test") {
     const wrongName = document.createElement("text");
     wrongName.innerText = "Fel användarnamn";
     outputBox.appendChild(wrongName);
     console.log("Fel användarnamn");
-  } else if (password != "1234") {
+  }
+  if (password != "1234") {
     const wrongPassword = document.createElement("text");
     wrongPassword.innerText = "Fel lösenord";
     outputBox.appendChild(wrongPassword);
