@@ -1,6 +1,8 @@
+const outputBox = document.getElementById("outputBox");
 const upperBox = document.getElementById("upperBox");
 const middleBox = document.getElementById("middleBox");
 const lowerBox = document.getElementById("lowerBox");
+const userInfo = [];
 
 //show login box and instructions
 function showLogin() {
@@ -17,18 +19,47 @@ function showLogin() {
   passwordElmnt.setAttribute("placeholder", "Lösenord");
   passwordElmnt.setAttribute("type", "password");
 
-  const registerBtn = document.createElement("button");
-  registerBtn.innerText = "Registera dig";
+  const goToRegisterBtn = document.createElement("button");
+  goToRegisterBtn.innerText = "Registera dig";
 
   upperBox.appendChild(loginlabel);
   middleBox.appendChild(usernameElmnt);
   middleBox.appendChild(passwordElmnt);
   middleBox.appendChild(loginBtn);
-  lowerBox.appendChild(registerBtn);
+  lowerBox.appendChild(goToRegisterBtn);
 
   loginBtn.addEventListener("click", function () {
     verify(usernameElmnt.value, passwordElmnt.value);
   });
+  goToRegisterBtn.addEventListener("click", function () {
+    register();
+  });
+}
+//on registry click show registry
+function register() {
+  upperBox.innerHTML = "";
+  middleBox.innerHTML = "";
+  lowerBox.innerHTML = "";
+  outputBox.innerHTML = "";
+  console.log("At registry");
+  const registerlabel = document.createElement("label");
+  registerlabel.innerText =
+    "För att registera dig: skriv in ditt användarnamn och lösenord";
+
+  const registerBtn = document.createElement("button");
+  registerBtn.innerText = "Registera dig";
+
+  let usernameElmnt = document.createElement("input");
+  usernameElmnt.setAttribute("placeholder", "Användarnamn");
+
+  let passwordElmnt = document.createElement("input");
+  passwordElmnt.setAttribute("placeholder", "Lösenord");
+  passwordElmnt.setAttribute("type", "password");
+
+  upperBox.appendChild(registerlabel);
+  middleBox.appendChild(usernameElmnt);
+  middleBox.appendChild(passwordElmnt);
+  middleBox.appendChild(registerBtn);
 }
 //on login click verify user else show no login
 function verify(username, password) {
@@ -36,26 +67,24 @@ function verify(username, password) {
     upperBox.innerHTML = "";
     middleBox.innerHTML = "";
     lowerBox.innerHTML = "";
+    outputBox.innerHTML = "";
     console.log("Rätt input");
     showLogedin(username);
-  }
+  } else {
+    outputBox.innerHTML = "";
 
-  upperBox.innerHTML = "";
-  middleBox.innerHTML = "";
-  lowerBox.innerHTML = "";
-  showLogin();
-
-  if (username != "test") {
-    const wrongName = document.createElement("text");
-    wrongName.innerText = "Fel användarnamn";
-    lowerBox.appendChild(wrongName);
-    console.log("Fel användarnamn");
-  }
-  if (password != "1234") {
-    const wrongPassword = document.createElement("text");
-    wrongPassword.innerText = "Fel lösenord";
-    lowerBox.appendChild(wrongPassword);
-    console.log("Fel lösenord");
+    if (username != "test") {
+      const wrongName = document.createElement("text");
+      wrongName.innerText = "Fel användarnamn";
+      outputBox.appendChild(wrongName);
+      console.log("Fel användarnamn");
+    }
+    if (password != "1234") {
+      const wrongPassword = document.createElement("text");
+      wrongPassword.innerText = "Fel lösenord";
+      outputBox.appendChild(wrongPassword);
+      console.log("Fel lösenord");
+    }
   }
 }
 
@@ -66,7 +95,7 @@ function showLogedin(username) {
   const welcomeText = document.createElement("text");
   welcomeText.innerText = "Välkommen " + username;
 
-  upperBox.appendChild(logoutBtn);
+  lowerBox.appendChild(logoutBtn);
   middleBox.appendChild(welcomeText);
   console.log("Login");
   logoutBtn.addEventListener("click", function () {
