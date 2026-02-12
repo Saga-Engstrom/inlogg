@@ -49,17 +49,26 @@ function register() {
   const registerBtn = document.createElement("button");
   registerBtn.innerText = "Registera dig";
 
-  let usernameElmnt = document.createElement("input");
-  usernameElmnt.setAttribute("placeholder", "Användarnamn");
+  let registerUsernameElmnt = document.createElement("input");
+  registerUsernameElmnt.setAttribute("placeholder", "Användarnamn");
 
-  let passwordElmnt = document.createElement("input");
-  passwordElmnt.setAttribute("placeholder", "Lösenord");
-  passwordElmnt.setAttribute("type", "password");
+  let registerPasswordElmnt = document.createElement("input");
+  registerPasswordElmnt.setAttribute("placeholder", "Lösenord");
+  registerPasswordElmnt.setAttribute("type", "password");
 
   upperBox.appendChild(registerlabel);
-  middleBox.appendChild(usernameElmnt);
-  middleBox.appendChild(passwordElmnt);
+  middleBox.appendChild(registerUsernameElmnt);
+  middleBox.appendChild(registerPasswordElmnt);
   middleBox.appendChild(registerBtn);
+
+  registerBtn.addEventListener("click", function () {
+    addToUserInfo(registerUsernameElmnt.value, registerPasswordElmnt.value);
+  });
+}
+//add registry to userinfo object
+function addToUserInfo(registerUsername, registerPassword) {
+  console.log("username " + registerUsername);
+  console.log("password " + registerPassword);
 }
 //on login click verify user else show no login
 function verify(username, password) {
