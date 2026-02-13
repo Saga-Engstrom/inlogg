@@ -6,7 +6,7 @@ const userInfo = [];
 
 //show login box and instructions
 function showLogin() {
-  const loginlabel = document.createElement("label");
+  const loginlabel = document.createElement("text");
   loginlabel.innerText = "Skriv in ditt användarnamn och lösenord";
 
   const loginBtn = document.createElement("button");
@@ -31,6 +31,7 @@ function showLogin() {
   loginBtn.addEventListener("click", function () {
     verify(usernameElmnt.value, passwordElmnt.value);
   });
+
   goToRegisterBtn.addEventListener("click", function () {
     register();
   });
@@ -78,11 +79,7 @@ function addToUserInfo(registerUsername, registerPassword) {
 //on login click verify user else show no login
 function verify(username, password) {
   if (username == "test" && password == "1234") {
-    upperBox.innerHTML = "";
-    middleBox.innerHTML = "";
-    lowerBox.innerHTML = "";
-    outputBox.innerHTML = "";
-    console.log("Rätt input");
+    clearPage();
     showLogedin(username);
   } else {
     outputBox.innerHTML = "";
@@ -91,13 +88,11 @@ function verify(username, password) {
       const wrongName = document.createElement("text");
       wrongName.innerText = "Fel användarnamn";
       outputBox.appendChild(wrongName);
-      console.log("Fel användarnamn");
     }
     if (password != "1234") {
       const wrongPassword = document.createElement("text");
       wrongPassword.innerText = "Fel lösenord";
       outputBox.appendChild(wrongPassword);
-      console.log("Fel lösenord");
     }
   }
 }
@@ -111,7 +106,6 @@ function showLogedin(username) {
 
   lowerBox.appendChild(logoutBtn);
   middleBox.appendChild(welcomeText);
-  console.log("Login");
   logoutBtn.addEventListener("click", function () {
     logingOut();
   });
@@ -119,11 +113,15 @@ function showLogedin(username) {
 
 //logout switch to login page
 function logingOut() {
+  clearPage();
+  showLogin();
+}
+
+function clearPage() {
   upperBox.innerHTML = "";
   middleBox.innerHTML = "";
   lowerBox.innerHTML = "";
-
-  showLogin();
+  outputBox.innerHTML = "";
 }
 
 showLogin();
