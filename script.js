@@ -69,6 +69,11 @@ function register() {
 function addToUserInfo(registerUsername, registerPassword) {
   console.log("username " + registerUsername);
   console.log("password " + registerPassword);
+  userInfo.push({
+    username: registerUsername,
+    password: registerPassword,
+  });
+  console.log(userInfo);
 }
 //on login click verify user else show no login
 function verify(username, password) {
