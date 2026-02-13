@@ -3,6 +3,7 @@ const upperBox = document.getElementById("upperBox");
 const middleBox = document.getElementById("middleBox");
 const lowerBox = document.getElementById("lowerBox");
 const userInfo = [];
+const localStorageKey = "loggedInUsername";
 
 //show login box and instructions
 function showLogin() {
@@ -29,21 +30,17 @@ function showLogin() {
   lowerBox.appendChild(goToRegisterBtn);
 
   loginBtn.addEventListener("click", function () {
-    verify(usernameElmnt.value, passwordElmnt.value);
+    verifyUserInfo(usernameElmnt.value, passwordElmnt.value);
   });
 
   goToRegisterBtn.addEventListener("click", function () {
+    clearPage();
     register();
   });
 }
 //on registry click show registry
 function register() {
-  upperBox.innerHTML = "";
-  middleBox.innerHTML = "";
-  lowerBox.innerHTML = "";
-  outputBox.innerHTML = "";
-  console.log("At registry");
-  const registerlabel = document.createElement("label");
+  const registerlabel = document.createElement("text");
   registerlabel.innerText =
     "För att registera dig: skriv in ditt användarnamn och lösenord";
 
@@ -68,28 +65,39 @@ function register() {
 }
 //add registry to userinfo object
 function addToUserInfo(registerUsername, registerPassword) {
-  console.log("username " + registerUsername);
-  console.log("password " + registerPassword);
   userInfo.push({
     username: registerUsername,
     password: registerPassword,
   });
-  console.log(userInfo);
+  clearPage();
+  showLogin();
 }
-//on login click verify user else show no login
-function verify(username, password) {
-  if (username == "test" && password == "1234") {
+
+function verifyUserInfo(username, password) {
+  let hasUsername = false;
+  let hasCorrectPassword = false;
+  for (user of userInfo) {
+    if (user.username === username) {
+      hasUsername = true;
+      if (user.password === password) {
+        hasCorrectPassword = true;
+        break;
+      }
+    }
+  }
+
+  if (hasUsername && hasCorrectPassword) {
     clearPage();
     showLogedin(username);
+    localStorage.setItem(localStorageKey, username);
   } else {
     outputBox.innerHTML = "";
 
-    if (username != "test") {
+    if (!hasUsername) {
       const wrongName = document.createElement("text");
-      wrongName.innerText = "Fel användarnamn";
+      wrongName.innerText = "Användaren finns inte";
       outputBox.appendChild(wrongName);
-    }
-    if (password != "1234") {
+    } else if (!hasCorrectPassword) {
       const wrongPassword = document.createElement("text");
       wrongPassword.innerText = "Fel lösenord";
       outputBox.appendChild(wrongPassword);
@@ -115,6 +123,7 @@ function showLogedin(username) {
 function logingOut() {
   clearPage();
   showLogin();
+  localStorage.clear();
 }
 
 function clearPage() {
@@ -124,4 +133,9 @@ function clearPage() {
   outputBox.innerHTML = "";
 }
 
-showLogin();
+let localStorageUser = localStorage.getItem(localStorageKey);
+if (localStorageUser != null) {
+  showLogedin(localStorageUser);
+} else {
+  showLogin();
+}
