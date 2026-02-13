@@ -4,6 +4,7 @@
   box-sizing: border-box;
   text-align: center;
 }
+
 * > button {
   height: 1.7rem;
   width: auto;
@@ -39,6 +40,7 @@
 #outputBox > text {
   font-weight: bold;
 }
+
 #mainBox {
   height: 25vh;
   width: 75vw;
@@ -48,6 +50,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+@media (max-width: 700px) {
+  #middleBox {
+    flex-direction: column;
+  }
 }
 #upperBox {
   height: auto;
