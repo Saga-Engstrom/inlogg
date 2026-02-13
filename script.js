@@ -20,10 +20,14 @@ function showLogin() {
   passwordElmnt.setAttribute("placeholder", "Lösenord");
   passwordElmnt.setAttribute("type", "password");
 
+  const goToRegisterBtn = document.createElement("button");
+  goToRegisterBtn.innerText = "Registera dig";
+
   upperBox.appendChild(loginlabel);
   middleBox.appendChild(usernameElmnt);
   middleBox.appendChild(passwordElmnt);
   middleBox.appendChild(loginBtn);
+  lowerBox.appendChild(goToRegisterBtn);
 
   loginBtn.addEventListener("click", function () {
     verifyUserInfo(usernameElmnt.value, passwordElmnt.value);
